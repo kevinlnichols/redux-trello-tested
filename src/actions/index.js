@@ -18,7 +18,7 @@ export const fetchBoardSuccess = board => ({
 });
 
 export const fetchBoard = () => dispatch => {
-    fetch('/board').then(res => {
+    return fetch('/board').then(res => {
         if (!res.ok) {
             return Promise.reject(res.statusText);
         }
