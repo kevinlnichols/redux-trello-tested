@@ -34,8 +34,7 @@ describe('<List />', () => {
         const instance = wrapper.instance();
         const text = seedCards[0].text;
         instance.addCard(text);
-        expect(dispatch).toHaveBeenCalled();
-        expect(dispatch.mock.calls[0][0]).toEqual(addCard(text, index));
+        expect(dispatch).toHaveBeenCalledWith(addCard(text, index));
     });
 
     it('Renders the cards', () => {

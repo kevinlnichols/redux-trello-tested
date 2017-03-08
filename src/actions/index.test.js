@@ -57,11 +57,9 @@ describe('fetchBoard', () => {
         const dispatch = jest.fn();
         return fetchBoard()(dispatch).then(() => {
             expect(fetch).toBeCalled();
-            expect(fetch.mock.calls[0][0]).toEqual('/board');
+            expect(fetch).toHaveBeenCalledWith('/board');
             expect(dispatch).toBeCalled();
-            const action = dispatch.mock.calls[0][0];
-            expect(action.type).toEqual(FETCH_BOARD_SUCCESS);
-            expect(action.board).toEqual(board);
+            expect(dispatch).toHaveBeenCalledWith(fetchBoardSuccess(board));
         });
     });
 });

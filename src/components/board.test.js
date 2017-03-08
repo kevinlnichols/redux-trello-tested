@@ -37,8 +37,7 @@ describe('<Board/>', () => {
     it('Dispatches fetchBoard on mount', () => {
         const dispatch = jest.fn();
         shallow(<Board title="Foo" lists={[]} dispatch={dispatch} />);
-        expect(dispatch).toHaveBeenCalled();
-        expect(dispatch.mock.calls[0][0]).toEqual(mockFetchBoardAction);
+        expect(dispatch).toHaveBeenCalledWith(mockFetchBoardAction);
     });
 
     it('Renders the title', () => {
@@ -60,8 +59,7 @@ describe('<Board/>', () => {
         const instance = wrapper.instance();
         const title = seedLists[0].title;
         instance.addList(title);
-        expect(dispatch).toHaveBeenCalled();
-        expect(dispatch.mock.calls[0][0]).toEqual(addList(title));
+        expect(dispatch).toHaveBeenCalledWith(addList(title));
     });
 
     it('Renders the lists', () => {
