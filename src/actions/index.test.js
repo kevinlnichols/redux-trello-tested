@@ -60,6 +60,6 @@ describe('fetchBoard', () => {
             const action = dispatch.mock.calls[0][0];
             expect(action.type).toEqual(FETCH_BOARD_SUCCESS);
             expect(action.board).toEqual(board);
-        }).catch(err => console.log(err));
+        });
     });
 });
