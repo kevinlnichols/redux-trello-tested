@@ -9,12 +9,14 @@ import {addList} from '../actions';
 const mockFetchBoardAction = {
     type: 'FETCH_BOARD'
 };
-jest.mock('../actions', () => ({
-    ...require.requireActual('../actions'),
-    fetchBoard() {
-        return mockFetchBoardAction;
+jest.mock('../actions', () => Object.assign({},
+    require.requireActual('../actions'),
+    {
+        fetchBoard: jest.fn().mockImplementation(() => {
+            return mockFetchBoardAction;
+        })
     }
-}));
+));
 
 describe('<Board/>', () => {
     let seedLists = [];
