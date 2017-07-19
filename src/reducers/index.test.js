@@ -1,5 +1,5 @@
 import {trelloReducer} from './index';
-import {addList, addCard, fetchBoardSuccess} from '../actions';
+import {addList, addCard} from '../actions';
 
 describe('trelloReducer', () => {
     // Set up some dummy data
@@ -19,7 +19,6 @@ describe('trelloReducer', () => {
     const card1 = {text: card1Text};
     const card2 = {text: card2Text};
     const card3 = {text: card3Text};
-
 
     it('Should set the initial state when nothing is passed in', () => {
         const state = trelloReducer(undefined, {type: '__UNKNOWN'});
@@ -45,7 +44,6 @@ describe('trelloReducer', () => {
         });
     });
 
-
     describe('addCard', () => {
         it('Should add new cards', () => {
             let state = {
@@ -55,24 +53,17 @@ describe('trelloReducer', () => {
             state = trelloReducer(state, addCard(card2Text, 1));
             state = trelloReducer(state, addCard(card3Text, 1));
             expect(state).toEqual({
-                lists: [{
-                    title: list1Title,
-                    cards: [card1]
-                }, {
-                    title: list2Title,
-                    cards: [card2, card3]
-                }]
+                lists: [
+                    {
+                        title: list1Title,
+                        cards: [card1]
+                    },
+                    {
+                        title: list2Title,
+                        cards: [card2, card3]
+                    }
+                ]
             });
-        });
-    });
-
-    describe('fetchBoardSuccess', () => {
-        it('Should replace the entire state', () => {
-            const board = {
-                lists: [list1, list2]
-            };
-            const state = trelloReducer(undefined, fetchBoardSuccess(board));
-            expect(state).toEqual(board);
         });
     });
 });

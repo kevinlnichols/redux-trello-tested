@@ -43,5 +43,3 @@ describe('<AddForm />', () => {
         expect(callback).not.toHaveBeenCalled();
     });
 });
-
-

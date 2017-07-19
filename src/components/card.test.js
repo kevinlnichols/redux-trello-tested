@@ -9,10 +9,8 @@ describe('<Card />', () => {
     });
 
     it('Renders the text', () => {
-        const text = "Foo";
+        const text = 'Foo';
         const wrapper = shallow(<Card text={text} />);
         expect(wrapper.text()).toEqual(text);
     });
 });
-
-

@@ -8,10 +8,10 @@ import {addCard} from '../actions';
 describe('<List />', () => {
     const seedCards = [];
     beforeAll(() => {
-        for (let i=0; i<10; i++) {
+        for (let i = 0; i < 10; i++) {
             seedCards.push({
                 text: `Card ${i}`
-            })
+            });
         }
     });
 
@@ -20,7 +20,7 @@ describe('<List />', () => {
     });
 
     it('Renders the title', () => {
-        const title = "Foo";
+        const title = 'Foo';
         const wrapper = shallow(<List title={title} cards={[]} />);
         expect(wrapper.contains(<h3>{title}</h3>)).toEqual(true);
     });
@@ -45,5 +45,3 @@ describe('<List />', () => {
         expect(firstCard.prop('text')).toEqual(seedCards[0].text);
     });
 });
-
-

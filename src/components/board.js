@@ -4,25 +4,19 @@ import {connect} from 'react-redux';
 import List from './list';
 import AddForm from './add-form';
 
-import {addList, fetchBoard} from '../actions';
+import {addList} from '../actions';
 
 import './board.css';
 
 export class Board extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.props.dispatch(fetchBoard());
-    }
-
     addList(title) {
         this.props.dispatch(addList(title));
     }
 
     render() {
-        const lists = this.props.lists.map((list, index) =>
+        const lists = this.props.lists.map((list, index) => (
             <List key={index} index={index} {...list} />
-        );
+        ));
 
         return (
             <div className="board">
@@ -45,4 +39,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Board);
-
